@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="index.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+    <style>
+        .badge-with-margin {margin-right: 1rem}
+    </style>
+</head>
+<body>
+<main class="container">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Login Form -->
+        <form method="post" action="/api/service">
+          <input type="text" id="service_id" class="fadeIn second" name="service_id" placeholder="Идентификатор сервиса">
+          <!--input type="text" id="password" class="fadeIn third" name="login" placeholder="password"-->
+          <input type="submit" class="fadeIn fourth" value="Создать сервис">
+        </form>
+      </div>
+    </div>
+    </h1>
+    <div class='row'>
+        <div class='col-3' style='text-align: right'>
+                <b>Список имеющихся сервисов:</b>
+        </div>
+        <div class='col-9' id='services'></div>
+    </div>
+</main>
+</body>
+</html>
