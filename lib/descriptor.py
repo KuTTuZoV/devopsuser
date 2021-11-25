@@ -1,7 +1,9 @@
 import os
 import yaml
 
-PORT_MIN = 9080
+HTTP_PORT_MIN = 9080
+LDAP_PORT_MIN_1 = 1389
+LDAP_PORT_MIN_2 = 1636
 services_file_name = "./devops/services.yaml" 
 template_file_name = services_file_name.replace('services', 'template')
 
@@ -19,7 +21,12 @@ def create_services(id):
         new_services = yaml.safe_load(stream)['services']
         old_services = services['services']
 
-        next_port = len(get_services()) * 100 + PORT_MIN
+        next_http_port = len(get_services()) * 100 + HTTP_PORT_MIN
+        next_ldap_port_1 = len(get_services()) * 100 + LDAP_PORT_MIN_1
+        next_ldap_port_1 = len(get_services()) * 100 + LDAP_PORT_MIN_2
+        new_services['nextcloud']['ports'].append(f'{next_http_port}:80')
+        new_services['openldap']['ports'].append(f'{next_ldap_port_1}:80') 
+        new_services['openldap']['ports'].append(f'{next_ldap_port_2}:80')     
         new_services['nextcloud']['ports'].append(f'{next_port}:80')    
         new_services['openldap']['volumes'].append(f'openldap_data:/{id}/openldap')
 
